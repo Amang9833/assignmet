@@ -1,5 +1,10 @@
+import Contatc from "./component/Contatc";
+
 const App = () => {
-  return <div>Hello world!</div>;
+  return <>
+  <Contatc />
+
+  </>;
 };
 
 export default App;
