@@ -1,2 +1,2 @@
 # live link 
-getuserinfo.netlify.app
+link [https://getuserinfo.netlify.app/]
