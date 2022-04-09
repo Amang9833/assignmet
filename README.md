@@ -1,2 +1,2 @@
 # live link 
-link [https://getuserinfo.netlify.app/]
+[https://getuserinfo.netlify.app/](link)
