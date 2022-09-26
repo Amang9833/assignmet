@@ -1,0 +1,19 @@
+{
+  "name": "aman",
+  "version": "1.0.0",
+  "description": "The backend from contact from in nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "aman9833"
+  },
+  "author": "aman",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.6.1"
+  }
+}

@@ -1,43 +1,40 @@
 import React, {useState} from 'react'
 import './contact.css'
+import axios from 'axios';
 
 function Contatc() {
     const [user, setUser] = useState({
         name: '',
         email: '',
         phone: '',
-        address: '',
-        message:''
+        address: ''
     });
     let name, value;
     const getUserDate = (event) => {
-        name= event.target.name;
+        name=event.target.name;
         value=event.target.value;
         setUser({...user, [name]: value });
     }
 
     const postData = async (e) => {
-        const { name, email, phone, address, message } = user;
             
             e.preventDefault();
-            const data = await fetch(
-                "https://contact-page-e337f-default-rtdb.firebaseio.com/contact-form.json",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        name,
-                        email,
-                        phone,
-                        address,
-                        message,
-                    }),
-                }
-                );
-                
-                if (data) {
+            // const data = await fetch("localhost:80/data", {
+            //   method: "POST",
+            //   headers: {
+            //     "Content-type": "application/json",
+            //   },
+            //   body: JSON.stringify({
+            //     name,
+            //     email,
+            //     phone,
+            //     address,
+            //   }),
+            // });
+      const { name, email, phone, address } = user;
+          await axios.post('/data',{name, email, phone, address} );
+                console.log(user)
+                if (user) {
                     setUser({
                         name: "",
                         email: "",
@@ -47,16 +44,16 @@ function Contatc() {
                     });
                 }
                 
-                window.alert('form submit sir:)')
+                window.alert('form submited sir:)')
         
 
     }
   return (
     <>
-      <div class="container">
-        <div class="form-container">
-          <div class="left-container">
-            <div class="left-inner-container">
+      <div className="container">
+        <div className="form-container">
+          <div className="left-container">
+            <div className="left-inner-container">
               <h2>Let's Chat</h2>
               <p>
                 Whether you have a question, want to start a project or simply
@@ -66,21 +63,21 @@ function Contatc() {
               <p>Feel free to send me a message in the contact form</p>
             </div>
           </div>
-          <div class="right-container">
-            <div class="right-inner-container">
+          <div className="right-container">
+            <div className="right-inner-container">
               <form method='POST'>
-                <h2 class="lg-view">Contact Us</h2>
-                <h2 class="sm-view">Let's Chat</h2>
+                <h2 className="lg-view">Contact Us</h2>
+                <h2 className="sm-view">Let's Chat</h2>
                 <p>* Required</p>
-                <div class="social-container">
-                  <a href="#" class="social">
-                    <i class="fab fa-facebook-f"></i>
+                <div className="social-container">
+                  <a href="/" className="social">
+                    <i className="fab fa-facebook-f"></i>
                   </a>
-                  <a href="#" class="social">
-                    <i class="fab fa-google-plus-g"></i>
+                  <a href="/" className="social">
+                    <i className="fab fa-google-plus-g"></i>
                   </a>
-                  <a href="#" class="social">
-                    <i class="fab fa-linkedin-in"></i>
+                  <a href="/" className="social">
+                    <i className="fab fa-linkedin-in"></i>
                   </a>
                 </div>
                 <input
@@ -106,22 +103,13 @@ function Contatc() {
                   onChange={getUserDate}
                   name="phone"
                 />
-                <textarea
-                  rows="3"
-                  placeholder="Address..."
+                {/* <input
+                  type={'date'}
+                  placeholder="date"
                   value={user.address}
-                  onChange={getUserDate}
-                  autoComplete='no'
-                  name="address"
-                ></textarea>
-                <textarea
-                  rows="1"
-                  placeholder="Message..."
-                  value={user.message}
-                  onChange={getUserDate}
-                  autoComplete='no'
-                  name="message"
-                ></textarea>
+                  onChange={(e)=>setUser(e.target.value)}
+                  name="date"
+                /> */}
                 <button onClick={postData} >Submit</button>
               </form>
             </div>
